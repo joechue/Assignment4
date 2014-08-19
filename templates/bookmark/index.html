@@ -1,0 +1,36 @@
+{% extends 'bookmark/base.html' %}
+{%load newfilters%}
+{%block body_block%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bookmark</title>
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+            {% if categories %}
+      <h2>Your Bookmarks</h2>
+                <ul class="list-group">
+                    {% for category in categories %}
+                    <!-- Following line changed to add an HTML hyperlink -->
+                    <a href="/bookmark/category/{{ category.url }}" class="list-group-item list-group-item-info">{{ category.name }}</a>
+                    {% endfor %}
+                </ul>
+             {% else %}
+                  <strong>There are no categories present.</strong>
+             {% endif %}
+          <div class="btn-group">
+            <a href="/bookmark/restricted/" type="button" class="btn btn-default btn-danger">Restricted Page</a>
+            <a href="/bookmark/add_category/" class="btn btn-default btn-info">Add a New Category</a>
+            <a href="/bookmark/logout/" class="btn btn-default btn-fill btn-primary">Logout</a>
+          </div>
+      </span>
+        {% else %}
+          <div class="btn-group btn-group-lg">
+            <button type="button" class="btn btn-default"><a href="/bookmark/register/">Register Here</a><br /></button>
+            <button type="button" class="btn btn-default"><a href="/bookmark/login/">Login</a><br /></button>
+          </div>
+        {% endif %}
+    </body>
+</html>
+{%endblock%}

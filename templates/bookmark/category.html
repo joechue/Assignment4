@@ -1,0 +1,28 @@
+{% extends 'bookmark/base.html' %}
+{%load newfilters%}
+{%block body_block%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bookmark</title>
+    </head>
+
+    <body>
+        <h1>{{ category_name }}</h1>
+        {% if category %}
+            {% if pages %}
+            <ul class="list-group">
+                {% for page in pages %}
+                <a class="list-group-item list-group-item-warning" href="{{ page.url }}">{{ page.title }}</a>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <strong>No pages currently in category.</strong>
+            {% endif %}
+            <a class="btn btn-warning" href="/bookmark/category/{{category_name_url}}/add_page">Add a New Page</a>
+        {% else %}
+            The specified category {{ category_name }} does not exist!
+        {% endif %}
+    </body>
+</html>
+{%endblock%}

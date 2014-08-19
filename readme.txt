@@ -1,0 +1,2 @@
+Any categories with a space in their name was not able to load the form. After some debugging, they are now operational. Adding pages to these categories is also possible.
+Let the record show that I am disgruntled with the outdated state of the code provided and debugging was time-consuming and not covered in the scope of the assignment.
